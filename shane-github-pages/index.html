@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHANE // ACCESS TERMINAL</title>
+<meta name="description" content="SHANE // Access Terminal — enter the secret code to unlock the Shadowlands network interface.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="SHANE // ACCESS TERMINAL">
+<meta property="og:description" content="Enter the secret code to unlock the Shadowlands network interface.">
+<meta name="theme-color" content="#020604">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;font-family:Consolas,"Courier New",monospace;background:#020604;color:#35ff79;overflow:hidden}
+body{background:radial-gradient(circle at center,#062415 0%,#020604 55%,#000 100%)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(53,255,121,.025) 0 1px,transparent 1px 4px);z-index:20}
+#terminal{height:100%;display:flex;align-items:center;justify-content:center;padding:25px}
+.panel{width:min(850px,95vw);border:1px solid #35ff79;box-shadow:0 0 25px #0cff6755, inset 0 0 30px #0cff6710;background:#010b05cc}
+.topbar{padding:10px 15px;border-bottom:1px solid #35ff79;background:#06150b;display:flex;justify-content:space-between}
+.brand{font-weight:bold;letter-spacing:4px}
+.status{font-size:12px}
+.content{padding:35px}
+h1{font-size:clamp(34px,7vw,76px);margin:0 0 5px;text-shadow:0 0 12px #35ff79;letter-spacing:8px}
+.subtitle{color:#8cffb2;margin-bottom:30px}
+.line{margin:9px 0;color:#42e978}
+.dim{color:#41875b}
+.prompt{display:flex;align-items:center;margin-top:28px;gap:10px}
+.prompt span{color:#35ff79}
+input{flex:1;background:#000;border:0;border-bottom:1px solid #35ff79;color:#35ff79;font:inherit;font-size:20px;padding:8px;outline:none}
+button{font:inherit;cursor:pointer}
+.access{background:#06150b;color:#35ff79;border:1px solid #35ff79;padding:9px 18px}
+.access:hover{background:#35ff79;color:#001b09;box-shadow:0 0 15px #35ff79}
+#desktop{display:none;width:100%;height:100%;background:linear-gradient(135deg,#0879b9,#064f8c 48%,#072b65);position:relative;font-family:"Segoe UI",Arial,sans-serif;color:#fff}
+.wallpaper{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,#1596d3aa,#04336d 55%,#021a42);overflow:hidden}
+.wallpaper:after{content:"SHANE";position:absolute;right:7%;bottom:13%;font-size:12vw;font-weight:800;color:#ffffff09;letter-spacing:15px}
+.desktop-icons{position:absolute;top:25px;left:20px;display:flex;flex-direction:column;gap:18px}
+.icon{width:80px;text-align:center;color:#fff;text-shadow:0 1px 3px #000;cursor:pointer}
+.iconbox{font-size:32px;margin:auto auto 5px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:#ffffff18;border:1px solid #ffffff25}
+.taskbar{position:absolute;bottom:0;left:0;right:0;height:54px;background:#111827dd;backdrop-filter:blur(12px);display:flex;align-items:center;padding:0 10px;gap:6px;box-shadow:0 -1px 8px #0008}
+.start{font-size:27px;width:42px;height:42px;border:0;background:transparent;color:#fff}
+.taskbutton{height:42px;min-width:170px;border:0;background:#ffffff12;color:#fff;padding:0 16px;text-align:left}
+.taskbutton:hover,.start:hover{background:#ffffff25}
+.clock{margin-left:auto;text-align:right;font-size:12px;padding:0 10px}
+#message{min-height:20px;margin-top:15px;color:#ff496f}
+.window{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:min(900px,94vw);background:#151515;color:#fff;box-shadow:0 15px 55px #000b;display:none}
+.windowbar{height:38px;background:#222;display:flex;align-items:center;padding-left:14px;justify-content:space-between}
+.windowtitle{font-size:14px}.close{height:38px;width:45px;border:0;background:transparent;color:#fff}.close:hover{background:#e81123}
+.windowbody{padding:20px 25px 30px}
+.windowbody h2{font-weight:400;font-size:20px;margin:0 0 4px}
+.windowbody p{color:#bbb;margin-top:5px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:105px;gap:4px;margin-top:18px}
+.tile{border:0;color:#fff;text-decoration:none;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:12px;cursor:pointer;position:relative;overflow:hidden}
+.tile:hover{filter:brightness(1.2)}
+.tile .tileicon{position:absolute;top:13px;left:13px;font-size:28px}
+.tile strong{font-size:15px;font-weight:400}
+.tile span{font-size:11px;opacity:.75;margin-top:3px}
+.tile-main{grid-column:span 2;grid-row:span 2;background:#0879c9}
+.tile-green{background:#16820f}.tile-dark{background:#333}.tile-red{background:#d81717}.tile-purple{background:#6b2bbd}.tile-cyan{background:#008b9c}
+.small{font-size:12px;color:#777}
+@media(max-width:650px){.tiles{grid-template-columns:repeat(2,1fr)}.tile-main{grid-column:span 2}}
+</style>
+</head>
+<body>
+
+<section id="terminal">
+  <div class="panel">
+    <div class="topbar"><span class="brand">S.H.A.N.E // TERMINAL</span><span class="status">● ONLINE</span></div>
+    <div class="content">
+      <div class="dim">INITIALIZING SECURE INTERFACE...</div>
+      <div class="line">[OK] SYSTEM ONLINE</div>
+      <div class="line">[OK] IDENTITY: SHANE</div>
+      <div class="line">[OK] ENCRYPTED CHANNEL ESTABLISHED</div>
+      <br>
+      <h1>SHANE</h1>
+      <div class="subtitle">WELCOME TO THE SHADOW NETWORK</div>
+      <div class="dim">ACCESS LEVEL: UNKNOWN</div>
+      <div class="dim">THE SECRET CODE IS PROBABLY NOT 32.</div>
+      <div class="prompt">
+        <span>&gt;</span>
+        <input id="code" type="password" autocomplete="off" placeholder="PROBABLY NOT 32">
+        <button class="access" onclick="unlock()">ENTER</button>
+      </div>
+      <div id="message"></div>
+    </div>
+  </div>
+</section>
+
+<section id="desktop">
+  <div class="wallpaper"></div>
+  <div class="desktop-icons">
+    <div class="icon" onclick="openWindow()"><div class="iconbox">🌐</div>Shadowlands</div>
+    <div class="icon" onclick="openWindow()"><div class="iconbox">📁</div>Files</div>
+    <div class="icon" onclick="openWindow()"><div class="iconbox">⚙</div>Settings</div>
+  </div>
+
+  <div class="window" id="window">
+    <div class="windowbar">
+      <span class="windowtitle">SHANE — Main Menu</span>
+      <button class="close" onclick="closeWindow()">✕</button>
+    </div>
+    <div class="windowbody">
+      <h2>Shane Network</h2>
+      <p>Choose an application.</p>
+      <div class="tiles">
+        <a class="tile tile-main" href="https://www.theshadowlands.net/" target="_blank">
+          <div class="tileicon">🌑</div><strong>Shadowlands.com</strong><span>MAIN ACCESS</span>
+        </a>
+        <button class="tile tile-green"><div class="tileicon">📁</div><strong>Files</strong><span>TO BE MADE SOON</span></button>
+        <button class="tile tile-dark"><div class="tileicon">💬</div><strong>Messages</strong><span>TO BE MADE SOON</span></button>
+        <button class="tile tile-red"><div class="tileicon">🎮</div><strong>Games</strong><span>TO BE MADE SOON</span></button>
+        <button class="tile tile-purple"><div class="tileicon">⚙</div><strong>Settings</strong><span>TO BE MADE SOON</span></button>
+        <button class="tile tile-cyan"><div class="tileicon">?</div><strong>More</strong><span>TO BE MADE SOON</span></button>
+      </div>
+      <p class="small">SHANE NETWORK • ACCESS GRANTED</p>
+    </div>
+  </div>
+
+  <div class="taskbar">
+    <button class="start" onclick="openWindow()">⊞</button>
+    <button class="taskbutton" onclick="openWindow()">🌑 Shane Network</button>
+    <div class="clock" id="clock"></div>
+  </div>
+</section>
+
+<script>
+function unlock(){
+  const value=document.getElementById('code').value.trim();
+  const msg=document.getElementById('message');
+  if(value==="32"){
+    document.getElementById('terminal').style.display='none';
+    document.getElementById('desktop').style.display='block';
+    openWindow();
+  }else{
+    msg.textContent="[ACCESS DENIED] INVALID CODE";
+    document.getElementById('code').value="";
+  }
+}
+document.getElementById('code').addEventListener('keydown',e=>{if(e.key==="Enter")unlock()});
+function openWindow(){document.getElementById('window').style.display='block'}
+function closeWindow(){document.getElementById('window').style.display='none'}
+function updateClock(){
+  const d=new Date();
+  document.getElementById('clock').innerHTML=d.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'})+"<br>"+d.toLocaleDateString();
+}
+setInterval(updateClock,1000); updateClock();
+</script>
+</body>
+</html>
